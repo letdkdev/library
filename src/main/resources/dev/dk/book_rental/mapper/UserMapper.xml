@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+
+<!--</beans>-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.dk.book_rental.mapper.UserMapper">
+
+    <insert id="insertUser">
+
+        INSERT INTO
+            user(user_no,name,age,hp,address,status,status_reason,max_count,on_rental_count)
+        VALUES (
+               (SELECT ifnull(max(user_no),0)+1 FROM user us),
+               '${user.name}',
+                ${user.age},
+               '${user.hp}',
+               '${user.address}',
+               '대여가능',
+               '개인사유',
+               5,
+               0);
+    </insert>
+
+    <select id="selectUser" resultType="dev.dk.book_rental.dto.UserDto">
+
+        SELECT * FROM user
+
+    </select>
+
+    <select id="selectOneUser" resultType="dev.dk.book_rental.dto.UserDto">
+
+        SELECT *
+        FROM user
+        WHERE user_no = #{user_no}
+
+    </select>
+
+    <update id="updateUser">
+
+        UPDATE user
+        SET name = '${user.name}',
+            age = ${user.age},
+            hp = ${user.hp},
+            address = '${user.address}'
+        WHERE user_no = ${user.user_no}
+
+    </update>
+
+    <delete id="deleteUser">
+
+        DELETE
+        FROM user
+        WHERE user_no = ${user_no}
+    </delete>
+
+
+
+
+
+</mapper>

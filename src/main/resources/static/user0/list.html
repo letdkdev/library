@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>user list</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+          crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <style>
+        .btn-delete {
+
+            /*background-color:goldenrod !important;*/
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+<div style="background-color: cornflowerblue; height: 3.5rem;">
+    <h3 style="padding-left: 1rem; line-height: 3.5rem;">「도서관리 PJT」</h3>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
+            <div class="position-sticky pt-3 sidebar-sticky">
+                <ul class="nav flex-column">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/user">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            회원 main
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/user/user_add">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            &nbsp;&nbsp;회원 등록
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/user/list">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            &nbsp;&nbsp;회원 목록
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/book">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            도서 main
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/book/book_add">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            &nbsp;&nbsp;도서 등록
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/book/list">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            &nbsp;&nbsp;도서 목록
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/book">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            도서 대여 main
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/book/book_add">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            &nbsp;&nbsp;도서 대여
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="/user/list">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            &nbsp;&nbsp;도서 반납
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </nav>
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">회원 목록</h1>
+            </div>
+
+            <table id="myTable">
+
+                <thead>
+                <tr>
+                    <th>회원번호</th>
+                    <th>회원명</th>
+
+
+                    <th>대여상태</th>
+                    <th>사유</th>
+                    <th>최대대여가능권수</th>
+                    <th>현재대여권수</th>
+
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+
+                <tr>
+                    <td>1</td>
+
+
+                    <td onclick="move_detail(1)">user1</td>
+
+
+                    <td>대여가능</td>
+                    <td></td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(1, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(1, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>4</td>
+
+
+                    <td onclick="move_detail(4)">user5</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(4, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(4, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>5</td>
+
+
+                    <td onclick="move_detail(5)">user70</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(5, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(5, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>6</td>
+
+
+                    <td onclick="move_detail(6)">user8</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(6, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(6, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>7</td>
+
+
+                    <td onclick="move_detail(7)">user9</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(7, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(7, 'D')">
+                    </td>
+
+                </tr>
+
+
+                </tbody>
+            </table>
+        </main>
+
+        <form action="/user/update" method="post" id="_frm">
+            <input type="hidden" name="user_no" id="_user_no">
+            <input type="hidden" name="type" id="_type">
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script>
+
+<script src="dashboard.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+
+<script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(
+        function () {
+
+            $('#myTable').DataTable(
+            //     {
+            //
+            //
+            //     "responsive":true,          //반응형 테이블크기!!
+            //     "paging":true,              //페이지 처리
+            //     //"scrollX":true,           //X축 스크롤처리
+            //     //"scrollY":600,            //Y축 크기지정 및 스크롤처리
+            //     "scrollCollapse": true,
+            //     "ordering": true,           //정렬 사용 유무
+            //     // "lengthMenu": [ [20, 30, 50, 100, 200, -1], [20, 30, 50, 100, 200, "All"] ],//한페이지당 표시 할 수
+            //     "lengthMenu": [ [10, 20, 30, 40, 50, -1], [10, 20, 30, 40, 50, "All"] ],//한페이지당 표시 할 수
+            //     "processing": true,
+            //     "serverSide": true,         //서버에서 값을 불러올지에 대한 여부
+            //     "searching":true,           //검색을 허용할 것인가?
+            //
+            //     "ajax": {
+            //         "url": "/rest_user/get_list",
+            //         "type": "POST",
+            //         "data" : {
+            //         }
+            //     },
+            //
+            //     "columns": [
+            //         { "data": "user_no",title:'회원번호', className: "user_no" },
+            //
+            //         { "data": "name",title:'이름', className: "name" },
+            //
+            //         { "data": "pw",title:'비밀번호', className: "pw" },
+            //
+            //         { "data": "age",title:'나이', className: "age" },
+            //         { "data": "hp",title:'번호', className: "hp" },
+            //         { "data": "address",title:'주소', className: "address" },
+            //
+            //         { "data": "count",title:'현재대여권수', className: "count" }
+            //     ],
+            //
+            //     "order": [[ 0, "desc" ]],
+            //
+            //     dom: '<"html5buttons"B>lTfgitp',
+            //
+            //     buttons: [
+            //         {extend: 'copy'},
+            //
+            //         {extend: 'excel', title: '목록'},
+            //
+            //         {extend: 'pdf', title: '목록'},
+            //
+            //         {extend: 'print',
+            //             customize: function (win){
+            //                 $(win.document.body).addClass('white-bg');
+            //                 $(win.document.body).css('font-size', '10px');
+            //                 $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
+            //             }
+            //         }
+            //     ]
+            // }
+            );
+        }
+    );
+
+    function update_user(user_no, type) {
+
+        $('#_user_no').val(user_no);
+
+        $('#_type').val(type);
+
+        // if(type == "D") {
+        //     if(confirm("정말 삭제하시겠습니까?")) {
+        //         $('#_frm').submit();
+        //     } else {
+        //         return;
+        //     }
+        // }
+        if (confirm("정말 " + (type == "U" ? "수정" : "삭제") + "하시겠습니까?")) {
+
+            $('#_frm').submit();
+
+        }
+    }
+
+    function move_detail(user_no) {
+
+        $('#_frm').attr("action", "/user/detail");
+
+        $('#_user_no').val(user_no);
+
+        $('#_frm').submit();
+
+    }
+</script>
